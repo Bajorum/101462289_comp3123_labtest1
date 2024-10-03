@@ -1,28 +1,18 @@
+// lowerCaseWords.js
+
 function lowerCaseWords(arr) {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         if (!Array.isArray(arr)) {
-            console.log("Input is not an array");
-            reject("Input is not an array");
+            reject('Input is not an array');
         } else {
-            let filteredArr = arr.filter(function(item) {
-                return typeof item === 'string';
-            });
-
-            let lowerCasedArr = filteredArr.map(function(str) {
-                return str.toLowerCase();
-            });
-
-            console.log("Filtered and lower-cased array:", lowerCasedArr);
-            resolve(lowerCasedArr);
+            const filteredArr = arr.filter(item => typeof item === 'string');
+            const lowerCased = filteredArr.map(str => str.toLowerCase());
+            resolve(lowerCased);
         }
     });
 }
 
-
+// Example usage:
 lowerCaseWords([1, 'HELLO', 'World', true, 'JavaScript'])
-    .then(function(result) {
-        console.log(result);  
-    })
-    .catch(function(error) {
-        console.error(error);
-    });
+    .then(result => console.log(result))  // Output: ['hello', 'world', 'javascript']
+    .catch(error => console.error(error));

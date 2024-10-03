@@ -1,24 +1,22 @@
+// createLogs.js
 const fs = require('fs');
 const path = require('path');
 
 function createLogFiles() {
     const logsDir = path.join(__dirname, 'Logs');
-    
+
     if (!fs.existsSync(logsDir)) {
-        console.log("Creating Logs directory...");
-        fs.mkdirSync(logsDir);
-    } else {
-        console.log("Logs directory already exists");
+        fs.mkdirSync(logsDir);  // Create Logs directory
     }
 
-    console.log("Changing current directory to Logs...");
-    process.chdir(logsDir);
-    
+    process.chdir(logsDir);  // Change current working directory to Logs
+
     for (let i = 1; i <= 10; i++) {
-        let fileName = 'log' + i + '.txt';
-        fs.writeFileSync(fileName, 'This is log file number ' + i);
-        console.log("Created file:", fileName);
+        const fileName = `log${i}.txt`;
+        fs.writeFileSync(fileName, `This is log file number ${i}`);  // Create log file
+        console.log(`Created file: ${fileName}`);
     }
 }
 
+// Example usage:
 createLogFiles();

@@ -1,27 +1,21 @@
+// promises.js
+
 function resolvedPromise() {
-    return new Promise(function(resolve) {
-        console.log("Resolved promise started");
-        setTimeout(function() {
-            resolve("Resolved after 500ms");
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('Resolved after 500ms');
         }, 500);
     });
 }
 
 function rejectedPromise() {
-    return new Promise(function(reject) {
-        console.log("Rejected promise started");
-        setTimeout(function() {
-            reject("Rejected after 500ms");
+    return new Promise((_, reject) => {
+        setTimeout(() => {
+            reject('Rejected after 500ms');
         }, 500);
     });
 }
 
-resolvedPromise()
-    .then(function(message) {
-        console.log("Success:", message);
-    });
-
-rejectedPromise()
-    .catch(function(error) {
-        console.error("Error:", error);
-    });
+// Example usage:
+resolvedPromise().then(msg => console.log(msg));  // Output: 'Resolved after 500ms'
+rejectedPromise().catch(err => console.error(err));  // Output: 'Rejected after 500ms'
